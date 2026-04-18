@@ -62,6 +62,21 @@ class LeducRulesTest(unittest.TestCase):
         self.assertEqual(showdown_winner(state), 1)
         self.assertEqual(terminal_utility(state), -5)
 
+    def test_same_rank_without_pair_splits_the_pot(self):
+        state = LeducState(
+            private_cards=("J1", "J2"),
+            public_card="Q1",
+            round_index=1,
+            current_player=0,
+            contributions=(5, 5),
+            round_contributions=(0, 0),
+            raises_in_round=0,
+            round_histories=("bc", "xx"),
+            folded_player=None,
+        )
+        self.assertIsNone(showdown_winner(state))
+        self.assertEqual(terminal_utility(state), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

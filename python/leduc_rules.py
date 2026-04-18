@@ -134,20 +134,27 @@ def advance_round_or_terminal(
     )
 
 
-def showdown_winner(state: LeducState) -> int:
-    player_0_pair = card_rank(state.private_cards[0]) == card_rank(state.public_card)
-    player_1_pair = card_rank(state.private_cards[1]) == card_rank(state.public_card)
+def showdown_winner(state: LeducState) -> Optional[int]:
+    player_0_rank = card_rank(state.private_cards[0])
+    player_1_rank = card_rank(state.private_cards[1])
+    public_rank = card_rank(state.public_card)
+    player_0_pair = player_0_rank == public_rank
+    player_1_pair = player_1_rank == public_rank
     if player_0_pair and not player_1_pair:
         return 0
     if player_1_pair and not player_0_pair:
         return 1
-    return 0 if card_rank(state.private_cards[0]) > card_rank(state.private_cards[1]) else 1
+    if player_0_rank > player_1_rank:
+        return 0
+    if player_1_rank > player_0_rank:
+        return 1
+    return None
 
 
-def terminal_utility(state: LeducState) -> Optional[int]:
+def terminal_utility(state: LeducState) -> Optional[float]:
     if state.folded_player is not None:
         winner = 1 - state.folded_player
-        return state.contributions[1] if winner == 0 else -state.contributions[0]
+        return float(state.contributions[1] if winner == 0 else -state.contributions[0])
 
     if state.public_card is None:
         return None
@@ -155,7 +162,12 @@ def terminal_utility(state: LeducState) -> Optional[int]:
     round_history = state.round_histories[1]
     if round_history.endswith("xx") or round_history.endswith("bc") or round_history.endswith("rc"):
         winner = showdown_winner(state)
-        return state.contributions[1] if winner == 0 else -state.contributions[0]
+        if winner == 0:
+            return float(state.contributions[1])
+        if winner == 1:
+            return float(-state.contributions[0])
+        total_pot = state.contributions[0] + state.contributions[1]
+        return float(total_pot / 2 - state.contributions[0])
     return None
 
 
