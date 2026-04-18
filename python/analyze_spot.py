@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Any, Dict
 
 from .analyze_kuhn import analyze_kuhn
+from .analyze_leduc import analyze_leduc
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -27,7 +28,32 @@ def analyze_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
             history=payload.get("history", ""),
             iterations=int(payload.get("iterations", 20000)),
         )
+    if game == "leduc":
+        round_histories = payload.get("round_histories", ["", ""])
+        return analyze_leduc(
+            hero_card=payload["hero_card"],
+            public_card=payload.get("public_card"),
+            round_histories=(round_histories[0], round_histories[1]),
+            iterations=int(payload.get("iterations", 50)),
+        )
     raise SystemExit(f"unsupported game: {game}")
+
+
+def print_text_result(result: Dict[str, Any]) -> None:
+    print(f"game: {result['game']}")
+    print(f"hero_card: {result['hero_card']}")
+    if result["game"] == "kuhn":
+        print(f"history: {result['history'] or '<root>'}")
+    elif result["game"] == "leduc":
+        public_card = result["public_card"] or "-"
+        print(f"public_card: {public_card}")
+        print(f"round_histories: {result['round_histories']}")
+    print(f"recommended_action: {result['recommended_action']}")
+    for action, probability in result["strategy"].items():
+        print(f"  {action}: {probability:.4f}")
+    print(f"player_0_value: {result['player_0_value']:.6f}")
+    if "infoset_count" in result:
+        print(f"infoset_count: {result['infoset_count']}")
 
 
 def main() -> None:
@@ -37,13 +63,7 @@ def main() -> None:
         print(json.dumps(result, ensure_ascii=False))
         return
 
-    print(f"game: {result['game']}")
-    print(f"hero_card: {result['hero_card']}")
-    print(f"history: {result['history'] or '<root>'}")
-    print(f"recommended_action: {result['recommended_action']}")
-    for action, probability in result["strategy"].items():
-        print(f"  {action}: {probability:.4f}")
-    print(f"player_0_value: {result['player_0_value']:.6f}")
+    print_text_result(result)
 
 
 if __name__ == "__main__":
