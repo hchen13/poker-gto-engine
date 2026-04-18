@@ -1,0 +1,8 @@
+{
+  "source": "https://cs.stackexchange.com/questions/169593/nash-equilibrium-details-for-leduc-holdem",
+  "player_0_value": -0.08553,
+  "notes": [
+    "Reported by a CFR implementation after evaluating 500,000,000 games.",
+    "Use as an external correctness target for Phase 0/1, not as final proof."
+  ]
+}

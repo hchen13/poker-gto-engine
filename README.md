@@ -24,7 +24,7 @@
 - 起手策略满足 Kuhn equilibrium family 约束：J 的 bluff 频率在区间内，K 的 value bet 频率约为 `3 * alpha`，Q 起手近似纯 check
 
 下一步：
-1. 加 Leduc Poker correctness tests
+1. 基于 `fixtures/leduc/reference.json` 开始 Leduc correctness tests
 2. 把 infoset / regret store 抽成独立模块
-3. 做 Python 与 Rust 对拍输出
+3. 扩大 Python/Rust 对拍输出
 4. 进入 river subgame baseline
