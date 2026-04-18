@@ -8,7 +8,6 @@ from .kuhn_cfr import train_kuhn_cfr
 
 VALID_CARDS = {"J", "Q", "K"}
 VALID_HISTORY_CHARS = {"p", "b"}
-ACTION_NAMES = {"check": "check", "bet": "bet"}
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -28,8 +27,15 @@ def validate_inputs(hero_card: str, history: str) -> None:
         raise SystemExit(f"invalid history chars: {''.join(invalid)}")
 
 
-def normalize_strategy(strategy: Dict[str, float]) -> Dict[str, float]:
-    return {ACTION_NAMES[action]: probability for action, probability in strategy.items()}
+def action_labels_for_history(history: str) -> Dict[str, str]:
+    if history.endswith("b"):
+        return {"check": "fold", "bet": "call"}
+    return {"check": "check", "bet": "bet"}
+
+
+def normalize_strategy(strategy: Dict[str, float], history: str) -> Dict[str, float]:
+    action_names = action_labels_for_history(history)
+    return {action_names[action]: probability for action, probability in strategy.items()}
 
 
 def analyze_kuhn(hero_card: str, history: str, iterations: int) -> Dict[str, object]:
@@ -39,7 +45,7 @@ def analyze_kuhn(hero_card: str, history: str, iterations: int) -> Dict[str, obj
     if infoset_key not in summary["infoset_strategy"]:
         raise SystemExit(f"unknown information set: {infoset_key}")
 
-    strategy = normalize_strategy(summary["infoset_strategy"][infoset_key])
+    strategy = normalize_strategy(summary["infoset_strategy"][infoset_key], history)
     recommended_action = max(strategy, key=strategy.get)
     return {
         "game": "kuhn",

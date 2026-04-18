@@ -1,34 +1,14 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
 from typing import Dict, List
 import itertools
+
+from .cfr_core import InfoSet
 
 ACTIONS = ("check", "bet")
 PASS_ACTION = "p"
 BET_ACTION = "b"
 CARD_RANK = {"J": 0, "Q": 1, "K": 2}
-
-
-@dataclass
-class InfoSet:
-    regret_sum: List[float] = field(default_factory=lambda: [0.0, 0.0])
-    strategy_sum: List[float] = field(default_factory=lambda: [0.0, 0.0])
-
-    def current_strategy(self) -> List[float]:
-        positive_regrets = [max(regret, 0.0) for regret in self.regret_sum]
-        normalizer = sum(positive_regrets)
-        if normalizer > 0:
-            return [regret / normalizer for regret in positive_regrets]
-        return [0.5, 0.5]
-
-    def average_strategy(self) -> Dict[str, float]:
-        normalizer = sum(self.strategy_sum)
-        if normalizer > 0:
-            strategy = [total / normalizer for total in self.strategy_sum]
-        else:
-            strategy = [0.5, 0.5]
-        return {ACTIONS[index]: probability for index, probability in enumerate(strategy)}
 
 
 class KuhnCFRTrainer:
@@ -69,7 +49,7 @@ class KuhnCFRTrainer:
             return terminal_utility
 
         info_key = cards[player] + history
-        info_set = self.info_sets.setdefault(info_key, InfoSet())
+        info_set = self.info_sets.setdefault(info_key, InfoSet(actions=ACTIONS))
         strategy = info_set.current_strategy()
 
         if player == 0:
