@@ -49,9 +49,14 @@ class KuhnCFRTrainer:
             for card in cards
             if card in self.info_sets
         }
+        infoset_strategy = {
+            key: info_set.average_strategy()
+            for key, info_set in self.info_sets.items()
+        }
         return {
             "player_0_value": average_game_value,
             "root_strategy": root_strategy,
+            "infoset_strategy": infoset_strategy,
         }
 
     def _cfr(self, cards: List[str], history: str, reach_0: float, reach_1: float) -> float:
