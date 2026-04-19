@@ -7,6 +7,7 @@ from typing import Any, Dict
 
 from .analyze_kuhn import analyze_kuhn
 from .analyze_leduc import analyze_leduc
+from .analyze_nlhe_river import analyze_nlhe_river
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -36,22 +37,44 @@ def analyze_payload(payload: Dict[str, Any]) -> Dict[str, Any]:
             round_histories=(round_histories[0], round_histories[1]),
             iterations=int(payload.get("iterations", 50)),
         )
+    if game == "nlhe_river":
+        return analyze_nlhe_river(
+            board=payload["board"],
+            hero_hand=payload["hero_hand"],
+            pot=float(payload["pot"]),
+            to_call=float(payload["to_call"]),
+            villain_range=payload["villain_range"],
+        )
     raise SystemExit(f"unsupported game: {game}")
 
 
 def print_text_result(result: Dict[str, Any]) -> None:
     print(f"game: {result['game']}")
-    print(f"hero_card: {result['hero_card']}")
+    if result["game"] in {"kuhn", "leduc"}:
+        print(f"hero_card: {result['hero_card']}")
     if result["game"] == "kuhn":
         print(f"history: {result['history'] or '<root>'}")
     elif result["game"] == "leduc":
         public_card = result["public_card"] or "-"
         print(f"public_card: {public_card}")
         print(f"round_histories: {result['round_histories']}")
+    elif result["game"] == "nlhe_river":
+        print(f"board: {result['board']}")
+        print(f"hero_hand: {result['hero_hand']}")
+        print(f"pot: {result['pot']:.2f}")
+        print(f"to_call: {result['to_call']:.2f}")
+        print(f"villain_combo_count: {result['villain_combo_count']}")
     print(f"recommended_action: {result['recommended_action']}")
-    for action, probability in result["strategy"].items():
-        print(f"  {action}: {probability:.4f}")
+    if "strategy" in result:
+        for action, probability in result["strategy"].items():
+            print(f"  {action}: {probability:.4f}")
     print(f"player_0_value: {result['player_0_value']:.6f}")
+    if "equity" in result:
+        print(f"equity: {result['equity']:.6f}")
+    if "required_equity" in result:
+        print(f"required_equity: {result['required_equity']:.6f}")
+    if "ev_call" in result:
+        print(f"ev_call: {result['ev_call']:.6f}")
     if "training_game_value" in result:
         print(f"training_game_value: {result['training_game_value']:.6f}")
     if "best_response_player_0" in result:

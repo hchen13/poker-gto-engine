@@ -1,0 +1,8 @@
+{
+  "game": "nlhe_river",
+  "board": ["Ah", "Kd", "7s", "2c", "2d"],
+  "hero_hand": ["As", "Ac"],
+  "pot": 100,
+  "to_call": 50,
+  "villain_range": [["Qh", "Qs"], ["Jc", "Jh"]]
+}
