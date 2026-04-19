@@ -52,6 +52,14 @@ def print_text_result(result: Dict[str, Any]) -> None:
     for action, probability in result["strategy"].items():
         print(f"  {action}: {probability:.4f}")
     print(f"player_0_value: {result['player_0_value']:.6f}")
+    if "training_game_value" in result:
+        print(f"training_game_value: {result['training_game_value']:.6f}")
+    if "best_response_player_0" in result:
+        print(f"best_response_player_0: {result['best_response_player_0']:.6f}")
+    if "best_response_player_1" in result:
+        print(f"best_response_player_1: {result['best_response_player_1']:.6f}")
+    if "exploitability" in result:
+        print(f"exploitability: {result['exploitability']:.6f}")
     if "infoset_count" in result:
         print(f"infoset_count: {result['infoset_count']}")
 

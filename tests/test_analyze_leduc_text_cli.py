@@ -10,6 +10,7 @@ class AnalyzeLeducTextCLITest(unittest.TestCase):
         )
         self.assertIn("game: leduc", output)
         self.assertIn("recommended_action:", output)
+        self.assertIn("exploitability:", output)
 
 
 if __name__ == "__main__":

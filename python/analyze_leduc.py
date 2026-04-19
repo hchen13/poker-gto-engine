@@ -51,7 +51,11 @@ def analyze_leduc(
         "recommended_action": recommended_action,
         "strategy": strategy,
         "player_0_value": summary["player_0_value"],
+        "training_game_value": summary["training_game_value"],
         "infoset_count": summary["infoset_count"],
+        "best_response_player_0": summary["best_response_player_0"],
+        "best_response_player_1": summary["best_response_player_1"],
+        "exploitability": summary["exploitability"],
     }
 
 
@@ -75,6 +79,10 @@ def main() -> None:
     for action, probability in result["strategy"].items():
         print(f"  {action}: {probability:.4f}")
     print(f"player_0_value: {result['player_0_value']:.6f}")
+    print(f"training_game_value: {result['training_game_value']:.6f}")
+    print(f"best_response_player_0: {result['best_response_player_0']:.6f}")
+    print(f"best_response_player_1: {result['best_response_player_1']:.6f}")
+    print(f"exploitability: {result['exploitability']:.6f}")
     print(f"infoset_count: {result['infoset_count']}")
 
 

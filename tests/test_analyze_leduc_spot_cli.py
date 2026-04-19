@@ -31,6 +31,9 @@ class AnalyzeLeducSpotCLITest(unittest.TestCase):
         self.assertEqual(result["hero_card"], "K")
         self.assertAlmostEqual(sum(result["strategy"].values()), 1.0, delta=1e-6)
         self.assertIn(result["recommended_action"], {"check", "bet"})
+        self.assertIn("exploitability", result)
+        self.assertIn("best_response_player_0", result)
+        self.assertIn("best_response_player_1", result)
 
 
 if __name__ == "__main__":

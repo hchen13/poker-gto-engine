@@ -21,6 +21,19 @@ class LeducCFRSmokeTest(unittest.TestCase):
         self.assertGreater(result["root_strategy"]["Q"]["bet"], 0.6)
         self.assertGreater(result["root_strategy"]["K"]["bet"], 0.6)
 
+    def test_training_reports_exploitability_that_improves_with_more_iterations(self):
+        shallow = train_leduc_cfr(iterations=100)
+        deeper = train_leduc_cfr(iterations=1000)
+
+        for result in (shallow, deeper):
+            self.assertIn("exploitability", result)
+            self.assertIn("best_response_player_0", result)
+            self.assertIn("best_response_player_1", result)
+            self.assertGreaterEqual(result["exploitability"], 0.0)
+
+        self.assertLess(deeper["exploitability"], shallow["exploitability"])
+        self.assertLess(deeper["exploitability"], 0.05)
+
 
 if __name__ == "__main__":
     unittest.main()
