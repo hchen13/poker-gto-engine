@@ -4,3 +4,4 @@
 //! architecture is scaffolded here for later migration.
 
 pub mod kuhn;
+pub mod leduc;
