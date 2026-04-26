@@ -1,0 +1,53 @@
+{
+  "_comment": "HU 200BB ranges. Hand combos same as 100BB (ranges stable across depths per GTO Wizard). Preflop sizings updated: open 6BB, 3-bet 18BB, 4-bet 54BB.",
+  "_source": "PokerCoaching HUNL (Jonathan Little) hand combos, 200BB sizings from user",
+  "sizings": {
+    "sb_open_bb": 6.0,
+    "bb_3bet_bb": 18.0,
+    "sb_4bet_bb": 54.0
+  },
+  "action_lines": {
+    "sr_called": {
+      "description": "SB opens 6BB, BB calls. pot=12BB, stacks=194BB.",
+      "pot_bb": 12.0,
+      "sb_range": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 94s+, 84s+, 74s+, 63s+, 53s+, 43s, 32s, A2o+, K4o+, Q6o+, J7o+, T7o+, 97o+, 86o+, 75o+, 65o",
+      "bb_range": "22-JJ, A2s, A3s, A4s, A5s, A6s, A7s, A8s, A9s, ATs, K2s, K3s, K4s, K5s, K6s, K7s, K8s, K9s, KTs, Q2s, Q3s, Q4s, Q5s, Q6s, Q7s, Q8s, Q9s, QTs, J2s, J3s, J4s, J5s, J6s, J7s, J8s, J9s, JTs, T2s, T3s, T4s, T5s, T6s, T7s, T8s, T9s, 95s+, 84s+, 73s+, 63s+, 52s+, 43s, AJo, ATo, KJo, KTo, QJo, QTo, JTo, T9o, 98o, 87o"
+    },
+    "sr_called_ip_caller": {
+      "description": "Approximation for 6-max 'EP opens, IP calls' (e.g. UTG opens, BTN calls). OOP=opener range, IP=caller range (HU ranges used; directionally correct).",
+      "pot_bb": 12.0,
+      "sb_range": "22-JJ, A2s, A3s, A4s, A5s, A6s, A7s, A8s, A9s, ATs, K2s, K3s, K4s, K5s, K6s, K7s, K8s, K9s, KTs, Q2s, Q3s, Q4s, Q5s, Q6s, Q7s, Q8s, Q9s, QTs, J2s, J3s, J4s, J5s, J6s, J7s, J8s, J9s, JTs, T2s, T3s, T4s, T5s, T6s, T7s, T8s, T9s, 95s+, 84s+, 73s+, 63s+, 52s+, 43s, AJo, ATo, KJo, KTo, QJo, QTo, JTo, T9o, 98o, 87o",
+      "bb_range": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 94s+, 84s+, 74s+, 63s+, 53s+, 43s, 32s, A2o+, K4o+, Q6o+, J7o+, T7o+, 97o+, 86o+, 75o+, 65o"
+    },
+    "3bet_called": {
+      "description": "SB opens 6BB, BB 3-bets 18BB, SB calls. pot=36BB, stacks=182BB.",
+      "pot_bb": 36.0,
+      "sb_range": "22-JJ, AQs, AJs, ATs, KJs, KTs, QJs, QTs, JTs, T9s, 98s, 87s, 76s, 65s, AQo, KQo",
+      "bb_range": "JJ+, AKs, AKo, AQs, AQo, AJs, KQs, A2s, A3s, A4s, A5s, K7s, K8s, K9s, 54s, 64s, 65s, 75s, 76s, 87s, 98s"
+    },
+    "3bet_called_ip3bet": {
+      "description": "Approximation for 6-max 'IP 3-bets' spots (e.g. BTN 3bets UTG, UTG calls). OOP=caller range, IP=3bettor range (HU ranges used; directionally correct but wider than true 6-max). pot=36BB, stacks=182BB.",
+      "pot_bb": 36.0,
+      "sb_range": "JJ+, AKs, AKo, AQs, AQo, AJs, KQs, A2s, A3s, A4s, A5s, K7s, K8s, K9s, 54s, 64s, 65s, 75s, 76s, 87s, 98s",
+      "bb_range": "22-JJ, AQs, AJs, ATs, KJs, KTs, QJs, QTs, JTs, T9s, 98s, 87s, 76s, 65s, AQo, KQo"
+    },
+    "4bet_called": {
+      "description": "SB opens 6BB, BB 3-bets 18BB, SB 4-bets 54BB, BB calls. pot=108BB, stacks=146BB.",
+      "pot_bb": 108.0,
+      "sb_range": "AA, KK, QQ, JJ, AKs, AKo, AQs, A2s, A3s, A4s, A5s",
+      "bb_range": "AA, AQs, AJs, KQs, QJs, JTs, T9s, 98s, 87s, TT, 99, 88, AQo, KQo"
+    },
+    "4bet_called_ip_caller": {
+      "description": "Approximation for 6-max 'EP 4-bets, IP calls' (e.g. UTG opens, BTN 3-bets, UTG 4-bets, BTN calls). OOP=4-bettor range, IP=caller-of-4bet range. pot=108BB.",
+      "pot_bb": 108.0,
+      "sb_range": "AA, AQs, AJs, KQs, QJs, JTs, T9s, 98s, 87s, TT, 99, 88, AQo, KQo",
+      "bb_range": "AA, KK, QQ, JJ, AKs, AKo, AQs, A2s, A3s, A4s, A5s"
+    },
+    "limped": {
+      "description": "SB limps, BB checks. pot=2BB, stacks=199BB.",
+      "pot_bb": 2.0,
+      "sb_range": "22+, A2s+, K2s+, Q2s+, J2s+, T2s+, 92s+, 82s+, 73s+, 63s+, 53s+, 42s+, 32s, A2o+, K2o+, Q4o+, J7o+, T7o+, 97o+, 87o",
+      "bb_range": "22+, A2s+, K2s+, Q2s+, J2s+, T2s+, 92s+, 82s+, 73s+, 63s+, 53s+, 42s+, 32s, A2o+, K2o+, Q2o+, J2o+, T2o+, 92o+, 82o+, 72o+, 62o+, 52o+, 42o+, 32o"
+    }
+  }
+}

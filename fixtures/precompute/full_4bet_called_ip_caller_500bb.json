@@ -1,0 +1,11 @@
+{
+  "stack_bb": 500.0,
+  "ranges_file": "fixtures/precompute/hu_ranges_500bb.json",
+  "action_line": "4bet_called_ip_caller",
+  "n_flops": 1755,
+  "k_buckets": 16,
+  "iterations": 200,
+  "max_raises": 1,
+  "num_workers": 8,
+  "output_dir": "./precompute_out/full_4bet_called_ip_caller_500bb"
+}

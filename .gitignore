@@ -6,7 +6,17 @@ build/
 dist/
 .DS_Store
 
-
-# Added by cargo
-
+# Rust build artifacts
 /target
+
+# Precompute data — distributed via release tarball, not tracked in git
+/precompute_out/
+/precompute_out_v1_backup/
+/precompute_out_*/
+
+# Per-job logs from precompute scheduler
+*.log
+*.tmp
+
+# uv tool cache (per-tool venvs)
+.uv-cache/

@@ -1,0 +1,15 @@
+{
+  "_comment": "Real hand from user's 1/2 game. UTG (Allen, huge fish) limp-3bets to 40, hero 99 in CO calls, BTN calls, flop KJ9r Allen cbets 40 hero calls BTN folds, turn 5 Allen bets 100. Analyzing hero's turn decision: fold/call/raise, given Allen's fish limp-3bet-cbet-bet range.",
+  "game": "nlhe_turn_solve",
+  "board": ["Kc", "Jh", "9s", "5d"],
+  "pot": 203,
+  "stacks": [1920, 820],
+  "first_to_act": 1,
+  "hero_range": "99, JJ, KK, AKs, AKo, KJs, QTs, QTo, TT",
+  "villain_range": "AA, KK, QQ, JJ, AKs, AKo",
+  "hero_hand": "9h9d",
+  "iterations": 40,
+  "max_raises": 1,
+  "river_max_raises": 1,
+  "compute_exploitability": true
+}

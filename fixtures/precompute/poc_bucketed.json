@@ -1,0 +1,10 @@
+{
+  "stack_bb": 200.0,
+  "hero_range": "AA-22, A2s+, K2s+, Q2s+, J5s+, T6s+, 95s+, 84s+, 73s+, 63s+, 53s+, 42s+, 32s, A2o+, K5o+, Q7o+, J8o+, T8o+, 98o, 87o",
+  "villain_range": "AA-22, A2s+, K2s+, Q2s+, J5s+, T6s+, 95s+, 84s+, 73s+, 63s+, 53s+, 42s+, 32s, A2o+, K5o+, Q7o+, J8o+, T8o+, 98o, 87o",
+  "n_flops": 5,
+  "k_buckets": 16,
+  "iterations": 200,
+  "max_raises": 1,
+  "output_dir": "./precompute_out/poc_bucketed"
+}

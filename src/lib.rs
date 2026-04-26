@@ -5,3 +5,4 @@
 
 pub mod kuhn;
 pub mod leduc;
+pub mod nlhe;

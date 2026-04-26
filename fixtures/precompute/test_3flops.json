@@ -1,0 +1,10 @@
+{
+  "stack_bb": 200.0,
+  "max_raises_preflop": 2,
+  "iterations_preflop": 30,
+  "equity_table_samples": 100,
+  "n_flops_per_line": 3,
+  "iterations_postflop": 100,
+  "max_raises_postflop": 1,
+  "output_dir": "./precompute_out/test_3flops"
+}

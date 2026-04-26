@@ -4,12 +4,12 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from python.analyze_nlhe_river import analyze_nlhe_river
+from python.nlhe.equity import river_equity_vs_range
 
 
 class NlheRiverAnalyzerTest(unittest.TestCase):
     def test_analyzer_calls_when_hero_has_100_percent_equity(self):
-        result = analyze_nlhe_river(
+        result = river_equity_vs_range(
             board=["Ah", "Kd", "7s", "2c", "2d"],
             hero_hand=["As", "Ac"],
             pot=100,
@@ -22,7 +22,7 @@ class NlheRiverAnalyzerTest(unittest.TestCase):
         self.assertGreater(result["ev_call"], 0.0)
 
     def test_analyzer_folds_when_hero_has_zero_equity(self):
-        result = analyze_nlhe_river(
+        result = river_equity_vs_range(
             board=["Ah", "Kd", "7s", "2c", "2d"],
             hero_hand=["Qh", "Qs"],
             pot=100,

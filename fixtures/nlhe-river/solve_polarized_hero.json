@@ -1,0 +1,12 @@
+{
+  "game": "nlhe_river_solve",
+  "board": ["Ad", "Kh", "7s", "3c", "2d"],
+  "pot": 100,
+  "stacks": [200, 200],
+  "first_to_act": 0,
+  "hero_range": "AhAc, KsKc, QsJs",
+  "villain_range": "JcJd, TcTd, AcQc",
+  "hero_hand": "AhAc",
+  "iterations": 400,
+  "max_raises": 2
+}

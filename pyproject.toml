@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "poker-gto-skill"
+version = "0.1.0"
+description = "NLHE GTO hand analyzer — precomputed CFR+ tables + on-demand subgame solvers"
+requires-python = ">=3.10"
+dependencies = [
+    "msgpack>=1.0",
+    "zstandard>=0.22",
+]
+
+[project.scripts]
+poker = "skill.poker.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["skill"]

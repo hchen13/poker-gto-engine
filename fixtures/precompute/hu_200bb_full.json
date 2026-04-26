@@ -1,0 +1,10 @@
+{
+  "stack_bb": 200.0,
+  "max_raises_preflop": 3,
+  "iterations_preflop": 800,
+  "equity_table_samples": 1500,
+  "n_flops_per_line": 30,
+  "iterations_postflop": 200,
+  "max_raises_postflop": 1,
+  "output_dir": "./precompute_out/hu_200bb_full"
+}

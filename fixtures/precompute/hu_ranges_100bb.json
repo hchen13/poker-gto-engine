@@ -1,0 +1,36 @@
+{
+  "_comment": "HU preflop ranges derived from PokerCoaching 100BB HUNL Cash Game Charts (Jonathan Little) at https://poker-coaching.s3.amazonaws.com/tools/preflop-charts/100bb-hunl-cash-game-charts.pdf. Per-combo frequencies simplified to whole-hand inclusion. For 200BB use same ranges (opening ranges stable across depths per GTO Wizard).",
+  "_source": "PokerCoaching HUNL 100BB (Jonathan Little)",
+  "sizings": {
+    "sb_open_bb": 2.5,
+    "bb_3bet_bb": 10.0,
+    "sb_4bet_bb": 23.0,
+    "bb_5bet_bb": 45.0
+  },
+  "action_lines": {
+    "sr_called": {
+      "description": "SB opens 2.5x, BB just calls (no 3bet). Most common line.",
+      "pot_bb": 5.0,
+      "sb_range": "22+, A2s+, K2s+, Q2s+, J3s+, T5s+, 94s+, 84s+, 74s+, 63s+, 53s+, 43s, 32s, A2o+, K4o+, Q6o+, J7o+, T7o+, 97o+, 86o+, 75o+, 65o",
+      "bb_range": "22-JJ, A2s, A3s, A4s, A5s, A6s, A7s, A8s, A9s, ATs, K2s, K3s, K4s, K5s, K6s, K7s, K8s, K9s, KTs, Q2s, Q3s, Q4s, Q5s, Q6s, Q7s, Q8s, Q9s, QTs, J2s, J3s, J4s, J5s, J6s, J7s, J8s, J9s, JTs, T2s, T3s, T4s, T5s, T6s, T7s, T8s, T9s, 95s+, 84s+, 73s+, 63s+, 52s+, 43s, AJo, ATo, KJo, KTo, QJo, QTo, JTo, T9o, 98o, 87o"
+    },
+    "3bet_called": {
+      "description": "SB opens 2.5x, BB 3bets 10bb, SB calls. Deep mid-strength duel.",
+      "pot_bb": 20.0,
+      "sb_range": "22-JJ, AQs, AJs, ATs, KJs, KTs, QJs, QTs, JTs, T9s, 98s, 87s, 76s, 65s, AQo, KQo",
+      "bb_range": "JJ+, AKs, AKo, AQs, AQo, AJs, KQs, A2s, A3s, A4s, A5s, K7s, K8s, K9s, 54s, 64s, 65s, 75s, 76s, 87s, 98s"
+    },
+    "4bet_called": {
+      "description": "SB opens 2.5x, BB 3bets 10bb, SB 4bets 23bb, BB calls. High SPR premium battle.",
+      "pot_bb": 46.0,
+      "sb_range": "AA, KK, QQ, JJ, AKs, AKo, AQs, A2s, A3s, A4s, A5s",
+      "bb_range": "AA, AQs, AJs, KQs, QJs, JTs, T9s, 98s, 87s, TT, 99, 88, AQo, KQo"
+    },
+    "limped": {
+      "description": "SB limps, BB checks. Wide vs wide, very low SPR builds on future streets.",
+      "pot_bb": 2.0,
+      "sb_range": "22+, A2s+, K2s+, Q2s+, J2s+, T2s+, 92s+, 82s+, 73s+, 63s+, 53s+, 42s+, 32s, A2o+, K2o+, Q4o+, J7o+, T7o+, 97o+, 87o",
+      "bb_range": "22+, A2s+, K2s+, Q2s+, J2s+, T2s+, 92s+, 82s+, 73s+, 63s+, 53s+, 42s+, 32s, A2o+, K2o+, Q2o+, J2o+, T2o+, 92o+, 82o+, 72o+, 62o+, 52o+, 42o+, 32o"
+    }
+  }
+}

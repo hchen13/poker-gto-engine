@@ -1,0 +1,14 @@
+{
+  "game": "turn",
+  "board": ["Kc", "Jh", "9s", "5d"],
+  "pot": 203.0,
+  "stacks": [1920.0, 820.0],
+  "first_to_act": 1,
+  "hero_range": "99, JJ, KK, AKs, AKo",
+  "villain_range": "AA, KK, QQ, JJ, AKs, AKo",
+  "iterations": 1500,
+  "max_raises": 2,
+  "river_max_raises": 1,
+  "compute_exploitability": true,
+  "all_strategies": true
+}

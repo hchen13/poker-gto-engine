@@ -1,0 +1,12 @@
+{
+  "game": "river",
+  "board": ["Ad", "Kh", "7s", "3c", "2d"],
+  "pot": 100.0,
+  "stacks": [150.0, 150.0],
+  "first_to_act": 0,
+  "hero_range": "AhAc, KsKc, QsJs",
+  "villain_range": "JcJd, TcTd, AcQc",
+  "iterations": 1000,
+  "max_raises": 2,
+  "compute_exploitability": true
+}

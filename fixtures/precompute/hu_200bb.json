@@ -1,0 +1,7 @@
+{
+  "stack_bb": 200.0,
+  "max_raises_preflop": 2,
+  "iterations_preflop": 30,
+  "equity_table_samples": 200,
+  "output_dir": "./precompute_out/hu_200bb"
+}
