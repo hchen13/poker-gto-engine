@@ -32,6 +32,7 @@ jobs:
         uses: astral-sh/setup-uv@v4
         with:
           enable-cache: true
+          cache-dependency-glob: pyproject.toml
 
       - name: Install poker CLI (editable)
         run: uv tool install --editable .
