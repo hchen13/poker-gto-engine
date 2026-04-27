@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Build + test
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache cargo build
+        uses: Swatinem/rust-cache@v2
+
+      - name: Cargo tests (lib + integration)
+        run: cargo test --release
+
+      - name: Build release binaries
+        run: cargo build --release
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+
+      - name: Install poker CLI (editable)
+        run: uv tool install --editable .
+
+      - name: Verify CLI on PATH
+        run: |
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/poker" --help
+
+      - name: Download precompute tarball from release v0.1
+        run: |
+          curl -fsSL https://github.com/hchen13/poker-gto-engine/releases/download/v0.1/precompute_out_v2.tar.zst \
+            | zstd -d | tar -x
+          test -d precompute_out
+          echo "files: $(find precompute_out -name 'flop_*.mpk.zst' | wc -l)"
+
+      - name: Skill CLI smoke test
+        run: poker query 3bet_called 200 K62r KQo ip check | grep -q '"strategy"'
+
+      - name: Install pytest
+        run: uv pip install --system pytest
+
+      - name: Run Python test suite
+        run: python3 -m pytest tests/ -q

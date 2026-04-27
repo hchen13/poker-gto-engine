@@ -2,6 +2,9 @@
 
 [English](README.md) | **中文**
 
+[![CI](https://github.com/hchen13/poker-gto-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/hchen13/poker-gto-engine/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **真 GTO solver，封装成 LLM agent 技能。**
 
 跟你的 AI 朋友自然语言说一手牌——「我在 BB，3bet 底池，A♥K♠ on K62 rainbow，对手 check，怎么打？」——它不会瞎编频率，而是查一份预计算 CFR+ 表（或者 on-demand 跑一个 subgame solver），把 GTO 混合策略 + 用真实数字作锚点的理由列给你。

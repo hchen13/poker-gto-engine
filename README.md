@@ -2,6 +2,9 @@
 
 **English** | [中文](README.CN.md)
 
+[![CI](https://github.com/hchen13/poker-gto-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/hchen13/poker-gto-engine/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **A real GTO solver, packaged as an LLM agent skill.**
 
 Tell your AI friend in plain language — "I'm in BB, 3-bet pot, A♥K♠ on K62 rainbow, villain checks, what now?" — and instead of making up frequencies, the agent queries a precomputed CFR+ table (or runs an on-demand subgame solve) and shows you the GTO mixed strategy with reasoning anchored on the actual numbers.
