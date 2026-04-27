@@ -122,7 +122,10 @@ cargo test --lib --release       # ~50 Rust tests (CFR+ correctness, abstraction
 The `precompute_out/` directory (~1.4 GB) is not tracked in git — it ships as a release tarball. After clone + install, either:
 
 ```bash
-# Download the prebuilt tables (preferred):
+# Download the prebuilt tables (preferred), no `gh` required:
+curl -L https://github.com/hchen13/poker-gto-engine/releases/download/v0.1/precompute_out_v2.tar.zst | zstd -d | tar -x
+
+# Or with `gh` CLI:
 gh release download v0.1 --pattern 'precompute_out_v2.tar.zst'
 zstd -d precompute_out_v2.tar.zst -c | tar -x
 

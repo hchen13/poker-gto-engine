@@ -120,7 +120,10 @@ cargo test --lib --release       # ~50 个 Rust 测试（CFR+ 正确性、abstra
 `precompute_out/` 目录（~1.4 GB）不入 git——以 release tarball 形式发布。clone + install 后，三选一：
 
 ```bash
-# 直接下预编译表（推荐）：
+# 直接下预编译表（推荐），不需要 gh：
+curl -L https://github.com/hchen13/poker-gto-engine/releases/download/v0.1/precompute_out_v2.tar.zst | zstd -d | tar -x
+
+# 或者用 gh CLI：
 gh release download v0.1 --pattern 'precompute_out_v2.tar.zst'
 zstd -d precompute_out_v2.tar.zst -c | tar -x
 
