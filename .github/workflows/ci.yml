@@ -52,8 +52,5 @@ jobs:
       - name: Skill CLI smoke test
         run: poker query 3bet_called 200 K62r KQo ip check | grep -q '"strategy"'
 
-      - name: Install pytest
-        run: uv pip install --system pytest
-
       - name: Run Python test suite
-        run: python3 -m pytest tests/ -q
+        run: uvx pytest tests/ -q
